@@ -32,18 +32,21 @@ dependencies {
 
 afterEvaluate {
     publishing {
+        repositories {
+            maven {
+                url = uri("https://maven.pkg.github.com/fulcrum1378/ChipsLayoutManager")
+                credentials {
+                    username = System.getenv("GH_USERN")
+                    password = System.getenv("GH_TOKEN")
+                }
+            }
+        }
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'ir.mahdiparastesh.chlm'
-                artifactId = 'final'
-                version = '1.0'
-            }
-            debug(MavenPublication) {
-                from components.debug
-                groupId = 'ir.mahdiparastesh.chlm'
-                artifactId = 'final-debug'
-                version = '1.0'
+                groupId = 'ir.mahdiparastesh'
+                artifactId = 'chipslayoutmanager'
+                version = '0.4.0'
             }
         }
     }
