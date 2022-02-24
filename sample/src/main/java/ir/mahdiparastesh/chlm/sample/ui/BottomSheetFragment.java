@@ -9,11 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import ir.mahdiparastesh.chlm.sample.R;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import ir.mahdiparastesh.chlm.sample.databinding.FragmentBottomSheetBinding;
 
 public class BottomSheetFragment extends Fragment {
+    FragmentBottomSheetBinding b;
 
     public BottomSheetFragment() {
     }
@@ -27,20 +26,18 @@ public class BottomSheetFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
+        b = FragmentBottomSheetBinding.inflate(inflater, container, false);
+        return b.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-    }
-
-    @OnClick(R.id.btnShowSheet)
-    void onShowSheetClicked(View view) {
-        BottomSheetDialogFragment fragment = BottomSheetDialogFragment.newInstance();
-        fragment.show(getChildFragmentManager(), fragment.getTag());
+        b.btnShowSheet.setOnClickListener(v -> {
+            BottomSheetDialogFragment fragment = BottomSheetDialogFragment.newInstance();
+            fragment.show(getChildFragmentManager(), fragment.getTag());
+        });
     }
 }

@@ -5,7 +5,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -14,23 +13,19 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import ir.mahdiparastesh.chlm.sample.BuildConfig;
 import ir.mahdiparastesh.chlm.sample.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import ir.mahdiparastesh.chlm.sample.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
+    ActivityMainBinding b;
     private Drawer drawer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        b = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
 
-        toolbar.setTitle(getString(R.string.app_name_and_version, BuildConfig.VERSION_NAME));
+        b.toolbar.setTitle(getString(R.string.app_name_and_version, BuildConfig.VERSION_NAME));
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -38,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(b.toolbar);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawer = new DrawerBuilder(this)
-                .withToolbar(toolbar)
+                .withToolbar(b.toolbar)
                 .addDrawerItems(new PrimaryDrawerItem().withName(R.string.main).withIdentifier(1))
                 .addDrawerItems(new PrimaryDrawerItem().withName(R.string.bottom_sheet).withIdentifier(2))
                 .withOnDrawerItemClickListener(this::onDrawerItemClickListener)

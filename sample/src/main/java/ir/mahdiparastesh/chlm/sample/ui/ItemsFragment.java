@@ -20,25 +20,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ir.mahdiparastesh.chlm.sample.R;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import ir.mahdiparastesh.chlm.sample.databinding.FragmentItemsBinding;
 
 public class ItemsFragment extends Fragment {
+    FragmentItemsBinding b;
     private static final String EXTRA = "data";
-
-    @BindView(R.id.rvTest)
-    RecyclerView rvTest;
-    @BindView(R.id.spinnerPosition)
-    Spinner spinnerPosition;
-    @BindView(R.id.spinnerMoveTo)
-    Spinner spinnerMoveTo;
 
     private RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter;
     private List<String> positions;
     private List items;
 
-    private IItemsFactory itemsFactory = new ShortChipsFactory();
+    private final IItemsFactory itemsFactory = new ShortChipsFactory();
 
     public ItemsFragment() {
         // Required empty public constructor
@@ -54,12 +46,14 @@ public class ItemsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_items, container, false);
+        b = FragmentItemsBinding.inflate(inflater, container, false);
+        return b.getRoot();
     }
 
-    private RecyclerView.Adapter createAdapter(Bundle savedInstanceState) {
+    private RecyclerView.Adapter<? extends RecyclerView.ViewHolder> createAdapter(
+            Bundle savedInstanceState) {
         List<String> items;
         if (savedInstanceState == null)
             items = itemsFactory.getItems();
@@ -74,7 +68,59 @@ public class ItemsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+
+        b.btnRevert.setOnClickListener(v -> {
+            int position = b.spinnerPosition.getSelectedItemPosition();
+            if (position == Spinner.INVALID_POSITION)
+                return;
+
+            int positionMoveTo = b.spinnerMoveTo.getSelectedItemPosition();
+            if (positionMoveTo == Spinner.INVALID_POSITION)
+                return;
+
+            if (position == positionMoveTo) return;
+
+            b.spinnerPosition.setSelection(positionMoveTo);
+            b.spinnerMoveTo.setSelection(position);
+        });
+
+        b.btnDelete.setOnClickListener(v -> {
+            int position = b.spinnerPosition.getSelectedItemPosition();
+            if (position == Spinner.INVALID_POSITION)
+                return;
+            items.remove(position);
+            adapter.notifyItemRemoved(position);
+            updateSpinners();
+        });
+
+        b.btnMove.setOnClickListener(v -> {
+            int position = b.spinnerPosition.getSelectedItemPosition();
+            if (position == Spinner.INVALID_POSITION)
+                return;
+
+            int positionMoveTo = b.spinnerMoveTo.getSelectedItemPosition();
+            if (positionMoveTo == Spinner.INVALID_POSITION)
+                return;
+
+            if (position == positionMoveTo) return;
+
+            Object item = items.remove(position);
+            items.add(positionMoveTo, item);
+
+            adapter.notifyItemMoved(position, positionMoveTo);
+        });
+
+        b.btnScroll.setOnClickListener(
+                v -> b.rvTest.scrollToPosition(b.spinnerPosition.getSelectedItemPosition()));
+
+        b.btnInsert.setOnClickListener(v -> {
+            int position = b.spinnerPosition.getSelectedItemPosition();
+            if (position == Spinner.INVALID_POSITION)
+                position = 0;
+            items.add(position, itemsFactory.createOneItemForPosition(position));
+            adapter.notifyItemInserted(position);
+            updateSpinners();
+        });
 
         adapter = createAdapter(savedInstanceState);
 
@@ -82,7 +128,7 @@ public class ItemsFragment extends Fragment {
                 .setOrientation(ChipsLayoutManager.HORIZONTAL)
                 .build();
 
-        rvTest.addItemDecoration(new SpacingItemDecoration(
+        b.rvTest.addItemDecoration(new SpacingItemDecoration(
                 getResources().getDimensionPixelOffset(R.dimen.item_space),
                 getResources().getDimensionPixelOffset(R.dimen.item_space)));
 
@@ -94,13 +140,13 @@ public class ItemsFragment extends Fragment {
                 android.R.layout.simple_list_item_1, android.R.id.text1, positions);
         ArrayAdapter<String> spinnerAdapterMoveTo = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, positions);
-        spinnerPosition.setAdapter(spinnerAdapter);
-        spinnerMoveTo.setAdapter(spinnerAdapterMoveTo);
+        b.spinnerPosition.setAdapter(spinnerAdapter);
+        b.spinnerMoveTo.setAdapter(spinnerAdapterMoveTo);
 
-        rvTest.setLayoutManager(spanLayoutManager);
-        rvTest.getRecycledViewPool().setMaxRecycledViews(0, 10);
-        rvTest.getRecycledViewPool().setMaxRecycledViews(1, 10);
-        rvTest.setAdapter(adapter);
+        b.rvTest.setLayoutManager(spanLayoutManager);
+        b.rvTest.getRecycledViewPool().setMaxRecycledViews(0, 10);
+        b.rvTest.getRecycledViewPool().setMaxRecycledViews(1, 10);
+        b.rvTest.setAdapter(adapter);
 
     }
 
@@ -125,79 +171,19 @@ public class ItemsFragment extends Fragment {
             positions.add(String.valueOf(i));
 
         int selectedPosition =
-                Math.min(spinnerPosition.getSelectedItemPosition(), positions.size() - 1);
+                Math.min(b.spinnerPosition.getSelectedItemPosition(), positions.size() - 1);
         int selectedMoveToPosition =
-                Math.min(spinnerMoveTo.getSelectedItemPosition(), positions.size() -1);
+                Math.min(b.spinnerMoveTo.getSelectedItemPosition(), positions.size() -1);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, positions);
-        spinnerPosition.setAdapter(spinnerAdapter);
+        b.spinnerPosition.setAdapter(spinnerAdapter);
         selectedPosition = Math.min(spinnerAdapter.getCount() -1 , selectedPosition);
-        spinnerPosition.setSelection(selectedPosition);
+        b.spinnerPosition.setSelection(selectedPosition);
 
         ArrayAdapter<String> spinnerAdapterMoveTo = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, positions);
-        spinnerMoveTo.setAdapter(spinnerAdapterMoveTo);
-        spinnerMoveTo.setSelection(selectedMoveToPosition);
+        b.spinnerMoveTo.setAdapter(spinnerAdapterMoveTo);
+        b.spinnerMoveTo.setSelection(selectedMoveToPosition);
     }
-
-    @OnClick(R.id.btnRevert)
-    public void onRevertClicked(View view) {
-        int position = spinnerPosition.getSelectedItemPosition();
-        if (position == Spinner.INVALID_POSITION)
-            return;
-
-        int positionMoveTo = spinnerMoveTo.getSelectedItemPosition();
-        if (positionMoveTo == Spinner.INVALID_POSITION)
-            return;
-
-        if (position == positionMoveTo) return;
-
-        spinnerPosition.setSelection(positionMoveTo);
-        spinnerMoveTo.setSelection(position);
-    }
-
-    @OnClick(R.id.btnDelete)
-    public void onDeleteClicked(View view) {
-        int position = spinnerPosition.getSelectedItemPosition();
-        if (position == Spinner.INVALID_POSITION)
-            return;
-        items.remove(position);
-        adapter.notifyItemRemoved(position);
-        updateSpinners();
-    }
-
-    @OnClick(R.id.btnMove)
-    public void onMoveClicked(View view) {
-        int position = spinnerPosition.getSelectedItemPosition();
-        if (position == Spinner.INVALID_POSITION)
-            return;
-
-        int positionMoveTo = spinnerMoveTo.getSelectedItemPosition();
-        if (positionMoveTo == Spinner.INVALID_POSITION)
-            return;
-
-        if (position == positionMoveTo) return;
-
-        Object item = items.remove(position);
-        items.add(positionMoveTo, item);
-
-        adapter.notifyItemMoved(position, positionMoveTo);
-    }
-
-    @OnClick(R.id.btnScroll)
-    public void onScrollClicked(View view) {
-        rvTest.scrollToPosition(spinnerPosition.getSelectedItemPosition());
-    }
-
-    @OnClick(R.id.btnInsert)
-    public void onInsertClicked(View view) {
-        int position = spinnerPosition.getSelectedItemPosition();
-        if (position == Spinner.INVALID_POSITION)
-            position = 0;
-        items.add(position, itemsFactory.createOneItemForPosition(position));
-        adapter.notifyItemInserted(position);
-        updateSpinners();
-    }
-
 }
