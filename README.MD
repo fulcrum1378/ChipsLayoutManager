@@ -16,14 +16,14 @@ but with support of CRUD animations i decided to make such stuff and share it.
 
 with gradle
 ```GRADLE 
-implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
+implementation 'ir.mahdiparastesh:chipslayoutmanager:0.4.0@aar'
 ```
 
 Assuming you have installed jCenter provider:
 ```GRADLE
 allprojects {
     repositories {
-        jcenter()
+        maven { url = uri("https://maven.pkg.github.com/fulcrum1378/ChipsLayoutManager") }
     }
 }
 ```
