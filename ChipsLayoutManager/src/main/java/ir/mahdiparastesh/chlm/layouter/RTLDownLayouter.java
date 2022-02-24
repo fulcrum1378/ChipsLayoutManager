@@ -1,8 +1,9 @@
 package ir.mahdiparastesh.chlm.layouter;
 
 import android.graphics.Rect;
-import androidx.annotation.NonNull;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 class RTLDownLayouter extends AbstractLayouter {
 
@@ -19,7 +20,6 @@ class RTLDownLayouter extends AbstractLayouter {
     @Override
     void onPreLayout() {
         if (!rowViews.isEmpty()) {
-            //todo this isn't great place for that. Should be refactored somehow
             if (!isPurged) {
                 isPurged = true;
                 getCacheStorage().purgeCacheFromPosition(getLayoutManager().getPosition(rowViews.get(0).second));
