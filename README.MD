@@ -12,11 +12,11 @@ but with support of CRUD animations i decided to make such stuff and share it.
 </p>
 
 ## Setup and usage
-### Installation [ ![Download](https://api.bintray.com/packages/beloo/widget/ChipsLayoutManager/images/download.svg) ](https://bintray.com/beloo/widget/ChipsLayoutManager/_latestVersion)
+### Installation [ ![Download] ](https://bintray.com/beloo/widget/ChipsLayoutManager/_latestVersion)
 
 with gradle
 ```GRADLE 
-compile 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
+implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
 ```
 
 Assuming you have installed jCenter provider:
@@ -118,11 +118,10 @@ You have to call `notifyItemChanged` on `ChipsLayoutManager` otherwise layout wo
 You can manipulate with layout direction (**LTR** or **RTL**)<br/>
 _On Api >= 17:_
 ```XML
-<android.support.v7.widget.RecyclerView
+<androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:layoutDirection="rtl"
-       />
+       android:layoutDirection="rtl" />
 ```
 or programmatically (_on all supported Api:_):
 ```JAVA
@@ -130,38 +129,3 @@ ViewCompat.setLayoutDirection(recyclerView, ViewCompat.LAYOUT_DIRECTION_RTL);
 ```
 
 For example look at sample application.
-<br />
-### Bonus
-You may need an `RecyclerView.ItemDecoration` to work with `ChipsLayoutManager` for fast setup as showed in sample. <br/>
-It contained in same package and named `SpacingItemDecoration`.
-
-## Support [ ![Maintained](https://img.shields.io/maintenance/yes/2017.svg) ](https://github.com/BelooS/ChipsLayoutManager/tree/dev)
-BETA is going.
-I respond to your founded issues. Just create a ticket if you found something goes wrong.<br/>
-Thanks for testing, guys. I'm really appreciate it.
-
-### Contributors
-All pull requests are welcome. I've tried to make code clean & readable, so the next is up to you.
-I appreciate any help and contributors will be mentioned here.
-
-Thanks, [szijpeter](https://github.com/szijpeter) and everyone for valuable updates.
-
-### Known issues
-I create issues in tracking board of known problems.
-These issues are going to be fixed in next versions.
-
-### License [ ![license for ChipsLayoutManager](https://img.shields.io/hexpm/l/plug.svg) ](https://github.com/BelooS/ChipsLayoutManager/blob/dev/LICENSE)
-
-    Copyright 2016 Beloy Oleg, Ukraine.
-    
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    
-       http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
