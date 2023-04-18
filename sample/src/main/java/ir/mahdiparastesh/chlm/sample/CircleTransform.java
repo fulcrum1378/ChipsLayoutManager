@@ -34,7 +34,8 @@ public class CircleTransform extends BitmapTransformation {
         Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
         Paint paint = new Paint();
-        paint.setShader(new BitmapShader(squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));
+        paint.setShader(new BitmapShader(
+                squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));
         paint.setAntiAlias(true);
         float r = size / 2f;
         canvas.drawCircle(r, r, r, paint);

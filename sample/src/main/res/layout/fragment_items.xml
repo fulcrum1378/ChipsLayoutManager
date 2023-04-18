@@ -25,7 +25,6 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:text="@string/insert" />
 
@@ -35,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/btnInsert"
-            android:layout_toRightOf="@+id/btnInsert"
             android:text="@string/delete" />
 
         <Button
@@ -44,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/btnDelete"
-            android:layout_toRightOf="@+id/btnDelete"
             android:text="@string/move" />
 
         <Button
@@ -53,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/btnMove"
-            android:layout_toRightOf="@+id/btnMove"
             android:text="@string/scroll" />
 
         <Spinner
@@ -61,8 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnInsert"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentStart="true" />
 
         <ImageButton
             android:id="@+id/btnRevert"
@@ -70,7 +65,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnInsert"
             android:layout_toEndOf="@id/spinnerPosition"
-            android:layout_toRightOf="@id/spinnerPosition"
             android:src="@drawable/vector_sync_black_24dp" />
 
         <TextView
@@ -80,7 +74,6 @@
             android:layout_above="@+id/btnInsert"
             android:layout_alignBaseline="@+id/spinnerMoveTo"
             android:layout_toEndOf="@id/btnRevert"
-            android:layout_toRightOf="@id/btnRevert"
             android:text="@string/move_to" />
 
         <Spinner
@@ -88,7 +81,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnInsert"
-            android:layout_toEndOf="@id/tvMoveTo"
-            android:layout_toRightOf="@id/tvMoveTo" />
+            android:layout_toEndOf="@id/tvMoveTo" />
     </RelativeLayout>
 </RelativeLayout>

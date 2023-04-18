@@ -7,6 +7,7 @@
     android:background="@drawable/rounded_blue"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
+    tools:ignore="ContentDescription"
     tools:viewBindingIgnore="true">
 
     <TextView
@@ -24,7 +25,6 @@
         android:layout_height="15dp"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/tvText"
-        android:layout_toRightOf="@id/tvText"
         android:background="@null"
         android:src="@drawable/vector_cancel_24dp" />
 </RelativeLayout>
