@@ -4,11 +4,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:8.0.0'
         // classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+task clean(type: Delete) { delete rootProject.buildDir }
