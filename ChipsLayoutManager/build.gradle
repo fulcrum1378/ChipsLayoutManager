@@ -44,7 +44,7 @@ afterEvaluate { // You only need to set the access token and execute "gradle pub
                 url 'https://maven.pkg.github.com/fulcrum6378/ChipsLayoutManager'
                 credentials {
                     username 'fulcrum6378'
-                    password 'ghp_XXXXX'
+                    password System.getenv("GHP_TOKEN")
                 }
             }
         }
