@@ -37,7 +37,7 @@ dependencies {
     }
 }
 
-afterEvaluate {
+afterEvaluate { // You only need to set the access token and execute "gradle publish"...
     publishing {
         repositories {
             maven {
