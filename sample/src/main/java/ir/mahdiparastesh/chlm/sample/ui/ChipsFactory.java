@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
-import ir.mahdiparastesh.chlm.sample.entity.ChipsEntity;
 import ir.mahdiparastesh.chlm.sample.R;
+import ir.mahdiparastesh.chlm.sample.entity.ChipsEntity;
+import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
 
 class ChipsFactory implements IItemsFactory<ChipsEntity> {
 

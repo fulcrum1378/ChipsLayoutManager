@@ -3,8 +3,8 @@ package ir.mahdiparastesh.chlm.layouter;
 import android.graphics.Rect;
 
 public class Item {
-    private Rect viewRect;
-    private int viewPosition;
+    private final Rect viewRect;
+    private final int viewPosition;
 
     public Item(Rect viewRect, int viewPosition) {
         this.viewRect = viewRect;

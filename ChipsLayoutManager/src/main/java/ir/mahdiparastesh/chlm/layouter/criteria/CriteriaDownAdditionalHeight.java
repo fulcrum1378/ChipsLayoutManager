@@ -4,7 +4,7 @@ import ir.mahdiparastesh.chlm.layouter.AbstractLayouter;
 
 class CriteriaDownAdditionalHeight extends FinishingCriteriaDecorator {
 
-    private int additionalHeight;
+    private final int additionalHeight;
 
     CriteriaDownAdditionalHeight(IFinishingCriteria finishingCriteria, int additionalHeight) {
         super(finishingCriteria);

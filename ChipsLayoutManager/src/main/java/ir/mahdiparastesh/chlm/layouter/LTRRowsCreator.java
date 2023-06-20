@@ -2,6 +2,7 @@ package ir.mahdiparastesh.chlm.layouter;
 
 import android.graphics.Rect;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ir.mahdiparastesh.chlm.anchor.AnchorViewState;
@@ -15,7 +16,7 @@ class LTRRowsCreator implements ILayouterCreator {
     }
 
     @Override
-    public Rect createOffsetRectForBackwardLayouter(AnchorViewState anchor) {
+    public Rect createOffsetRectForBackwardLayouter(@NonNull AnchorViewState anchor) {
         Rect anchorRect = anchor.getAnchorViewRect();
 
         return new Rect(

@@ -17,7 +17,7 @@ class CenterInRowGravityModifier implements IGravityModifier {
         int placeHeight = maxEnd - minStart;
         int rectHeight = childRect.bottom - childRect.top;
         //calculate needed offset
-        int halfOffset = (placeHeight - rectHeight)/2;
+        int halfOffset = (placeHeight - rectHeight) / 2;
 
         childRect.top = minStart + halfOffset;
         childRect.bottom = maxEnd - halfOffset;

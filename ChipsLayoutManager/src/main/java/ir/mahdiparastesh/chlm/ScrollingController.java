@@ -120,12 +120,12 @@ abstract class ScrollingController implements IScrollingController {
 
     @Override
     public final int scrollHorizontallyBy(int d, RecyclerView.Recycler recycler, RecyclerView.State state) {
-        return canScrollHorizontally()? scrollBy(d, recycler, state) : 0;
+        return canScrollHorizontally() ? scrollBy(d, recycler, state) : 0;
     }
 
     @Override
     public final int scrollVerticallyBy(int d, RecyclerView.Recycler recycler, RecyclerView.State state) {
-        return canScrollVertically()? scrollBy(d, recycler, state) : 0;
+        return canScrollVertically() ? scrollBy(d, recycler, state) : 0;
     }
 
     private int scrollBy(int d, RecyclerView.Recycler recycler, RecyclerView.State state) {

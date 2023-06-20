@@ -21,6 +21,6 @@ public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
         outRect.left = horizontalSpacing / 2;
         outRect.right = horizontalSpacing / 2;
         outRect.top = verticalSpacing / 2;
-        outRect.bottom = verticalSpacing /2;
+        outRect.bottom = verticalSpacing / 2;
     }
 }

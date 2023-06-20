@@ -172,6 +172,7 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager
         return anchorView;
     }
 
+    @SuppressWarnings("unused")
     public class StrategyBuilder extends Builder {
         public Builder withLastRow(boolean withLastRow) {
             ChipsLayoutManager.this.isStrategyAppliedWithLastRow = withLastRow;
@@ -179,6 +180,7 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager
         }
     }
 
+    @SuppressWarnings("unused")
     public class Builder {
         @SpanLayoutChildGravity
         private Integer gravity;
@@ -342,6 +344,7 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager
         return RecyclerView.NO_POSITION;
     }
 
+    @SuppressWarnings("unused")
     @Nullable
     View getChildWithPosition(int position) {
         return childViewPositions.get(position);
@@ -426,7 +429,7 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager
     }
 
     @Override
-    public void detachAndScrapAttachedViews(RecyclerView.Recycler recycler) {
+    public void detachAndScrapAttachedViews(@NonNull RecyclerView.Recycler recycler) {
         super.detachAndScrapAttachedViews(recycler);
         childViewPositions.clear();
     }

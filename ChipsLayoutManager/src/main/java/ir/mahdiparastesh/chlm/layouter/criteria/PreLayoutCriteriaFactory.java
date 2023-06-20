@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 public class PreLayoutCriteriaFactory implements ICriteriaFactory {
 
-    private int additionalHeight;
-    private int additionalRowsCount;
+    private final int additionalHeight;
+    private final int additionalRowsCount;
 
     public PreLayoutCriteriaFactory(int additionalHeight, int additionalRowsCount) {
         this.additionalHeight = additionalHeight;

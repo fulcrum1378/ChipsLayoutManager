@@ -9,8 +9,8 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 public final class CacheParcelableContainer implements Parcelable {
-    private NavigableSet<Integer> startsRow = new TreeSet<>();
-    private NavigableSet<Integer> endsRow = new TreeSet<>();
+    private final NavigableSet<Integer> startsRow;
+    private final NavigableSet<Integer> endsRow;
 
     CacheParcelableContainer(NavigableSet<Integer> startsRow, NavigableSet<Integer> endsRow) {
         this.startsRow = startsRow;
