@@ -8,8 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ir.mahdiparastesh.chlm.sample.R;
-import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
 import ir.mahdiparastesh.chlm.sample.entity.ChipsEntity;
+import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
 
 class ShortChipsFactory implements IItemsFactory<ChipsEntity> {
 
@@ -77,7 +77,7 @@ class ShortChipsFactory implements IItemsFactory<ChipsEntity> {
         chipsEntities.addAll(getFewItems());
         chipsEntities.addAll(getFewItems());
 
-        for (int i=0; i< chipsEntities.size(); i++) {
+        for (int i = 0; i < chipsEntities.size(); i++) {
             ChipsEntity chipsEntity = chipsEntities.get(i);
             chipsEntity.setName(chipsEntity.getName() + " " + i);
         }
@@ -98,7 +98,7 @@ class ShortChipsFactory implements IItemsFactory<ChipsEntity> {
     @Override
     public List<ChipsEntity> getALotOfItems() {
         List<ChipsEntity> entities = new LinkedList<>();
-        for (int i=0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             entities.addAll(getItems());
         }
         return entities;

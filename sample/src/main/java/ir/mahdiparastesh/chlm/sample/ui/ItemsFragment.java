@@ -12,13 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ir.mahdiparastesh.chlm.ChipsLayoutManager;
-import ir.mahdiparastesh.chlm.SpacingItemDecoration;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import ir.mahdiparastesh.chlm.ChipsLayoutManager;
+import ir.mahdiparastesh.chlm.SpacingItemDecoration;
 import ir.mahdiparastesh.chlm.sample.R;
 import ir.mahdiparastesh.chlm.sample.databinding.FragmentItemsBinding;
 
@@ -133,7 +132,7 @@ public class ItemsFragment extends Fragment {
                 getResources().getDimensionPixelOffset(R.dimen.item_space)));
 
         positions = new LinkedList<>();
-        for (int i = 0; i< items.size(); i++)
+        for (int i = 0; i < items.size(); i++)
             positions.add(String.valueOf(i));
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(),
@@ -167,18 +166,18 @@ public class ItemsFragment extends Fragment {
 
     private void updateSpinners() {
         positions = new LinkedList<>();
-        for (int i = 0; i< items.size(); i++)
+        for (int i = 0; i < items.size(); i++)
             positions.add(String.valueOf(i));
 
         int selectedPosition =
                 Math.min(b.spinnerPosition.getSelectedItemPosition(), positions.size() - 1);
         int selectedMoveToPosition =
-                Math.min(b.spinnerMoveTo.getSelectedItemPosition(), positions.size() -1);
+                Math.min(b.spinnerMoveTo.getSelectedItemPosition(), positions.size() - 1);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, positions);
         b.spinnerPosition.setAdapter(spinnerAdapter);
-        selectedPosition = Math.min(spinnerAdapter.getCount() -1 , selectedPosition);
+        selectedPosition = Math.min(spinnerAdapter.getCount() - 1, selectedPosition);
         b.spinnerPosition.setSelection(selectedPosition);
 
         ArrayAdapter<String> spinnerAdapterMoveTo = new ArrayAdapter<>(getContext(),

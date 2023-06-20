@@ -4,7 +4,7 @@ import ir.mahdiparastesh.chlm.layouter.AbstractLayouter;
 
 class CriteriaRightAdditionalWidth extends FinishingCriteriaDecorator {
 
-    private int additionalWidth;
+    private final int additionalWidth;
 
     CriteriaRightAdditionalWidth(IFinishingCriteria finishingCriteria, int additionalWidth) {
         super(finishingCriteria);

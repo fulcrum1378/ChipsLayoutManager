@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ir.mahdiparastesh.chlm.sample.ui.OnRemoveListener;
 import ir.mahdiparastesh.chlm.sample.R;
+import ir.mahdiparastesh.chlm.sample.ui.OnRemoveListener;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private int viewHolderCount;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final int ITEM_TYPE_DEFAULT = 0;
     private final int ITEM_TYPE_INCREASED = 1;
 
@@ -36,7 +36,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 .inflate(R.layout.item_increased, parent, false);
         else itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_simple, parent, false);
-        viewHolderCount++;
         return new ViewHolder(itemView);
     }
 
@@ -63,8 +62,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ViewHolder(View itemView) {
             super(itemView);
-            tvText = (TextView) itemView.findViewById(R.id.tvText);
-            ImageButton ibClose = (ImageButton) itemView.findViewById(R.id.ibClose);
+            tvText = itemView.findViewById(R.id.tvText);
+            ImageButton ibClose = itemView.findViewById(R.id.ibClose);
             ibClose.setOnClickListener(v -> {
                 int position = getLayoutPosition();
                 if (position != -1) onRemoveListener.onItemRemoved(position);

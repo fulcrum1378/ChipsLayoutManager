@@ -65,7 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnInsert"
             android:layout_toEndOf="@id/spinnerPosition"
-            android:src="@drawable/vector_sync_black_24dp" />
+            android:src="@drawable/vector_sync_black_24dp"
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id='@+id/tvMoveTo'

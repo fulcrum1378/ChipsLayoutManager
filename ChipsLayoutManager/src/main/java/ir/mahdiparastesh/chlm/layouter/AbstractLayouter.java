@@ -127,9 +127,8 @@ public abstract class AbstractLayouter implements ILayouter, IBorder {
     }
 
     private void notifyLayouterListeners() {
-        for (ILayouterListener layouterListener : layouterListeners) {
+        for (ILayouterListener layouterListener : layouterListeners)
             layouterListener.onLayoutRow(this);
-        }
     }
 
     @Override
@@ -267,6 +266,7 @@ public abstract class AbstractLayouter implements ILayouter, IBorder {
         return viewBottom;
     }
 
+    @SuppressWarnings("unused")
     final Rect getOffsetRect() {
         return new Rect(viewLeft, viewTop, viewRight, viewBottom);
     }
@@ -303,7 +303,8 @@ public abstract class AbstractLayouter implements ILayouter, IBorder {
         private IRowStrategy rowStrategy;
         private AbstractPositionIterator positionIterator;
 
-        Builder() {}
+        Builder() {
+        }
 
         @SuppressWarnings("WeakerAccess")
         @NonNull

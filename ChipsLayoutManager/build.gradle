@@ -1,13 +1,12 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    // id 'io.github.gradle-nexus.publish-plugin'
 }
 
 android {
     namespace 'ir.mahdiparastesh.chlm'
     compileSdk Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion '34.0.0 rc3'
+    buildToolsVersion '34.0.0'
 
     defaultConfig {
         minSdk Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)

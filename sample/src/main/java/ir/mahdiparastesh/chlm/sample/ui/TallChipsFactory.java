@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 import ir.mahdiparastesh.chlm.sample.R;
-import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
 import ir.mahdiparastesh.chlm.sample.entity.ChipsEntity;
+import ir.mahdiparastesh.chlm.sample.ui.adapter.ChipsAdapter;
 
 public class TallChipsFactory implements IItemsFactory<ChipsEntity> {
 

@@ -1,11 +1,10 @@
 package ir.mahdiparastesh.chlm.layouter;
 
 import android.graphics.Rect;
-import androidx.annotation.NonNull;
 import android.util.Pair;
 import android.view.View;
 
-import java.util.Collections;
+import androidx.annotation.NonNull;
 
 class LTRUpLayouter extends AbstractLayouter implements ILayouter {
 

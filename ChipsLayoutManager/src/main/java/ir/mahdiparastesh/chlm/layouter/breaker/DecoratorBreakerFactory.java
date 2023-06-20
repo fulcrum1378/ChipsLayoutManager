@@ -11,7 +11,7 @@ public class DecoratorBreakerFactory implements IBreakerFactory {
     private final IViewCacheStorage cacheStorage;
     private final IRowBreaker rowBreaker;
 
-    
+
     @Nullable
     private final Integer maxViewsInRow;
 
